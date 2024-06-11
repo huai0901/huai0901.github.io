@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <style>
+        .custom-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 5px; /* 调整按钮位置 */
+      }
+    .custom-button ion-icon {
+      font-size: 32px;
+      color: #160f30;
+    }
+    .navbar {
+      background-image: url('/img/sponge.jpg'); /* 替換成您自己的圖片路徑 */
+      background-size: cover; /* 確保圖片覆蓋整個navbar */
+      background-position: center; /* 圖片置中 */
+    }
+    .navbar-brand {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px; /* 更改字體大小 */
+      color: #000000; /* 更改字體顏色 */
+      font-weight: bold; /* 更改字體粗細 */
+      font-family: 'Arial', sans-serif; /* 更改字體 */
+    }
+    
+    
+
+    .offcanvas-body {
+      background-image: url('/img/海綿寶1.jpg'); /* 替換成您自己的圖片路徑 */
+      background-size: cover; /* 確保圖片覆蓋整個offcanvas-body */
+      background-position: center; /* 圖片置中 */
+      
+    }
+
+    .accordion-item .accordion-header, 
+    .accordion-item .accordion-collapse {
+      background: rgba(255, 255, 255, 0.8); /* 可選：添加透明背景以便於閱讀 */
+    }
+
+    /* 梗圖區連結的樣式 */
+    .accordion-item a {
+      text-decoration: none; /* 移除連結底線 */
+      color: #000000; /* 更改字體顏色 */
+      font-size: 18px; /* 更改字體大小 */
+    }
+
+    /* 梗圖區連結的樣式2 */
+    .accordion-item ul {
+      list-style-type: none; /* 移除點點 */
+      padding-left: 0; /* 移除左側間距 */
+    }
+
+    .accordion-item ul li {
+      margin-bottom: 10px; /* 更改行距 */
+    }
+
+        body {
+            background-image: url('img/04Krabs/Krusty\ Krab.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .box {
+            width: 1000px;
+            height: 550px;
+            background-color: rgba(64, 224, 208, 0.8);
+            margin: 6em auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgb(0, 0, 0);
+            border-radius: 20px;
+            /* 添加圆角 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .image-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-evenly;
+            height: 93.5vh;
+        }
+
+        .image-group {
+            display: flex;
+            gap: 55px;
+        }
+
+        .image-container {
+            display: flex;
+            align-items: flex-end;
+            height: 300px; /* 這裡可以調整容器高度以適應你的需求 */
+        }
+
+        .image-row button {
+            border: none;
+            background: none;
+            padding: 0;
+            position: relative;
+        }
+
+        .image-row img {
+            transition: transform 0.3s ease;
+        }
+
+        .image-row button:hover img {
+            transform: scale(1.3);
+        }
+
+        .image-row button .tooltiptext {
+            visibility: hidden;
+            width: 150px;
+            background-color: #fceee8;
+            color: #000000;
+            text-align: center;
+            border-radius: 5px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            top: -45px;
+            left: -15%;
+            transform: translatey(-10%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .image-row button:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <a target="_self" id="back"></a>
+        <div class="image-row">
+            <div class="image-group">
+                <button onclick="scrollToBox()">
+                    <div class="image-container">
+                    <img src="img/04Krabs/Pearl Krabs.png" style="width: 165px;">
+                </div>
+                    <span class="tooltiptext">誰是蟹老闆女兒?(點點看)</span>
+                </button>
+
+                <button onclick="scrollToBox1()">
+                    <div class="image-container">
+                    <img src="img/04Krabs/MrsPuff.png" style="width: 135px;">
+                    </div>
+                    <span class="tooltiptext">誰是駕訓班教練?(點看看)</span>
+                </button>
+
+                <button onclick="scrollToBox2()">
+                    <div class="image-container">
+                    <img src="img/04Krabs/sandy.png" style="width: 110px;">
+                </div>
+                    <span class="tooltiptext">誰住在深海的　　樹屋裡?　　　　　(點看看)</span>
+                </button>
+
+                <button onclick="scrollToBox3()">
+                    <div class="image-container">
+                    <img src="img/04Krabs/MrKrabs.png" style="width: 155px;">
+                </div>
+                    <span class="tooltiptext">誰是蟹堡王老闆?　(點看看)</span>
+                </button>
+                
+                <button onclick="scrollToBox4()">
+                    <div class="image-container">
+                    <img src="img/04Krabs/Larry the Lobster.png" style="width: 220px;">
+                </div>
+                    <span class="tooltiptext">誰是健美龍蝦?　(點看看)</span>
+                </button>
+
+                <button onclick="scrollToBox5()">
+                    <div class="image-container">
+                    <img src="img/04Krabs/Miss Gristlepuss.png" style="width: 80px;">
+                </div>
+                    <span class="tooltiptext">誰是T.U.O.O.F.A.T.　　　T.A.F.A.D.的組長?(點看看)</span>
+                </button>
+
+                <button onclick="scrollToBox6()">
+                    <div class="image-container">
+                    <img src="img/04Krabs/Bubble Bass.png" style="width: 110px;">
+                </div>
+                    <span class="tooltiptext">誰在偷藏酸黃瓜?(點看看)</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="box" id="珍珍">
+            <div class="row m-5">
+                <div class="card-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="img/04Krabs/cutePearl Krabs.jpg" class="card-img-top">
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card-body">
+                                <h4 class="card-title"><b>珍珍</b></h4>
+                                <p class="card-text">
+                                    珍珍是蟹老闆的抹香鯨女兒，正值青春期，喜愛流行與時尚，
+                                    個性愛慕虛榮，經常大手筆的花錢，生日願望甚至能刷爆蟹老闆的信用卡，
+                                    但對於父親的小氣感到相當無奈，總是希望他可以改變。
+                                    <p></p>
+                                    與章魚哥是青梅竹馬，結交了無數朋友，但對海綿寶寶沒有好感。
+                                    
+                                </p>
+                                <a href="https://youtu.be/nAZ0WFDYU1g?si=kw0nf2cwjRXdeu6u" class="btn btn-primary">給珍珍一個蟹!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-0">
+                <a href="#back" class="btn btn-outline-light">返回</a>
+            </div>
+        </div>
+
+        <div class="box" id="泡芙阿姨">
+            <div class="row m-5">
+                <div class="card-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="img/04Krabs/MrsPuffdrive.jpg" class="card-img-top">
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card-body">
+                                <h4 class="card-title"><b>泡芙阿姨</b></h4>
+                                <p class="card-text">
+                                泡芙阿姨是一個金髮河豚，驚嚇過度或太激動時全身會膨脹起來，
+                                老公也是河豚但被人類做成了檯燈，所以她不喜歡提起這件事。
+                                <p></p>
+                                是海底駕訓班經營者兼老師，但對學生海綿寶寶感到畏懼，
+                                因為他考駕照經常導致大爆炸，甚至曾被海綿寶寶搞到神經質，或被迫背黑鍋而坐牢。
+                                </p>
+                                <a href="https://youtu.be/sLkndyZTQY4?si=psqb6SvpwzeO0qgQ" class="btn btn-primary">看看泡芙阿姨受難記</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-0">
+                <a href="#back" class="btn btn-outline-light">返回</a>
+            </div>
+        </div>
+
+        <div class="box" id="珊迪">
+            <div class="row m-5">
+                <div class="card-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="img/04Krabs/happysandy.jpg" class="card-img-top">
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card-body">
+                                <h4 class="card-title"><b>珊迪</b></h4>
+                                <p class="card-text">
+                                珊迪是一隻雌性松鼠，海綿寶寶的好朋友之一。
+                                居住在強化玻璃罩下的海底樹屋，平常外出會穿太空衣和頭盔避免溺水，
+                                而海洋生物進到珊迪家，就要戴裝水的頭盔，不然會缺水而死亡。
+                                <p></p>
+                                曾經是德克薩斯州的當地警長，身兼科學家、探險家和發明家，
+                                熱愛運動尤其是空手道和滑沙，也是牛仔競技的冠軍。
+                                </p>
+                                <a href="https://youtu.be/rOnMut_FwEU?si=JXl8VaBndCawag7w" class="btn btn-primary">不要打擾冬眠中的珊迪</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-0">
+                <a href="#back" class="btn btn-outline-light">返回</a>
+            </div>
+        </div>
+
+        <div class="box" id="蟹老闆">
+            <div class="row m-5">
+                <div class="card-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="img/04Krabs/MrKrabsmoney.jpg" class="card-img-top">
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card-body">
+                                <h4 class="card-title"><b>蟹阿金</b></h4>
+                                <p class="card-text">
+                                蟹老闆是一隻紅色螃蟹，珍珍的父親，
+                                視錢如命，可以為了錢連命都不要，甚至曾經為了62塊錢就賣掉海綿寶寶
+                                不過即使性格自私小氣，但他對員工及顧客還是十分關心。
+                                <p></p>
+                                經營著蟹堡王餐廳，員工有主廚海綿寶寶和收銀員章魚哥，宿敵是對面餐廳的皮老闆。
+                                通常營業時間會在辦公室看報紙、數錢、洗金錢浴等。
+                                </p>
+                                <a href="https://youtu.be/xW0IR3q0EvE?si=QIm7k1NvcNyjVaqp" class="btn btn-primary">蟹老闆表示我愛錢</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-0">
+                <a href="#back" class="btn btn-outline-light">返回</a>
+            </div>
+        </div>
+
+        <div class="box" id="蝦霸">
+            <div class="row m-5">
+                <div class="card-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="img/04Krabs/Larry the Lobstergym.jpg" class="card-img-top">
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card-body">
+                                <h4 class="card-title"><b>蝦霸</b></h4>
+                                <p class="card-text">
+                                蝦霸是一隻健美海螯蝦，有點自戀傾向，
+                                因為壯碩身材而常受海底女性的歡迎，
+                                海綿寶寶很羨慕蝦霸的發達肌肉。
+                                <p></p>
+                                他是酷樂湖的救生員，偏好健身和極限運動，
+                                也在比奇堡開了一間蝦霸健身房當健身教練。
+                                </p>
+                                <a href="https://youtu.be/ruN56Su-mLk?si=CaFVblBZZ40auv_j" class="btn btn-primary">跟蝦霸學習充實生活</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-0">
+                <a href="#back" class="btn btn-outline-light">返回</a>
+            </div>
+        </div>
+
+        <div class="box" id="正經小姐">
+            <div class="row m-5">
+                <div class="card-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="img/04Krabs/happinessMiss Gristlepuss.jpg" class="card-img-top">
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card-body">
+                                <h4 class="card-title"><b>正經八百小姐</b></h4>
+                                <p class="card-text">
+                                正經八百小姐是個性格古怪的老太婆，丈夫是位警官名叫艾爾。
+                                曾是眾多老太太組成的比奇堡端正社會風氣組織「正經八百小組」
+                                （英文簡稱T.U.O.O.F.A.T.T.A.F.A.D.）的組長。
+                                <p></p>
+                                發誓要消滅世上一切好吃好玩的東西，
+                                認為美味蟹堡是不正經的東西，但意外吃到美味蟹堡後就改變了主意。
+                                </p>
+                                <a href="https://youtu.be/GPHtFOqeEe0?si=9bf3erTOHZc75UsA" class="btn btn-primary">看看不正經八百小姐</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-0">
+                <a href="#back" class="btn btn-outline-light">返回</a>
+            </div>
+        </div>
+
+        <div class="box" id="包老大">
+            <div class="row m-5">
+                <div class="card-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="img/04Krabs/madBubble Bass.jpg" class="card-img-top">
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card-body">
+                                <h4 class="card-title"><b>包老大</b></h4>
+                                <p class="card-text">
+                                包老大是一隻鱸魚，海綿寶寶的死對頭，
+                                曾經因為掩藏蟹堡裡的酸黃瓜，害海綿寶寶發生工作失誤，差點忘記怎麼做美味蟹堡。
+                                <p></p>
+                                現在跟他聒噪的老媽一起住家裡，兩人常因為包老大不做家事而吵架，
+                                是海超人與大洋遊俠的忠實粉絲，在房間放了很多漫畫和玩具模型。
+                                </p>
+                                <a href="https://youtu.be/D1xC-5vw3vI?si=oMnxbB8EVavmgUt2" class="btn btn-primary">聽聽包老大的點餐咒語</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-0">
+                <a href="#back" class="btn btn-outline-light">返回</a>
+            </div>
+        </div>
+
+        <script>
+            function scrollToBox() {
+                var box = document.getElementById('珍珍');
+                box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            function scrollToBox1() {
+                var box = document.getElementById('泡芙阿姨');
+                box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            function scrollToBox2() {
+                var box = document.getElementById('珊迪');
+                box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            function scrollToBox3() {
+                var box = document.getElementById('蟹老闆');
+                box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            function scrollToBox4() {
+                var box = document.getElementById('蝦霸');
+                box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            function scrollToBox5() {
+                var box = document.getElementById('正經小姐');
+                box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            function scrollToBox6() {
+                var box = document.getElementById('包老大');
+                box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        </script>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-light fixed-top">
+            <div class="container-fluid">
+                <button class="custom-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft"
+                    aria-controls="offcanvasLeft">
+                    <ion-icon name="list-sharp"></ion-icon>
+                </button>
+                <button id="homeButton" class="custom-button">
+                    <ion-icon name="home"></ion-icon>
+                  </button>
+                <a class="navbar-brand" href="#">蟹老闆</a>
+            </div>
+        </nav>
+
+
+        <!-- Offcanvas Component -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasLeftLabel">SpongeBob SquarePants</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <!-- Add your menu content here -->
+
+
+                <!-- Story Section -->
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                故事介紹
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><a href="story.html" target="_self">故事介紹</a></li>
+                                    
+                                  </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Characters Section -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                角色介紹
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><a href="http://127.0.0.1:5500/01.Spongebob.html" target="_self">海綿寶寶</a></li>
+                                    <li><a href="http://127.0.0.1:5500/02.Squidward.html" target="_self">章魚哥</a></li>
+                                    <li><a href="http://127.0.0.1:5500/03.Pat.html" target="_self">派大星</a></li>
+                                    <li><a href="http://127.0.0.1:5500/04.Krab.html" target="_self">蟹老闆</a></li>
+                                    <li><a href="http://127.0.0.1:5500/05.J.%20P.html" target="_self">皮老闆</a></li>
+                                    <li><a href="http://127.0.0.1:5500/06.Other.html" target="_self">其他角色</a></li>
+                                  </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Meme Section -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                梗圖區
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><a href="http://127.0.0.1:5500/index2(meme).html" target="_self">嗆人用</a></li>
+                <li><a href="http://127.0.0.1:5500/index4(meme2).html" target="_self">有趣.現實</a></li>
+                <li><a href="http://127.0.0.1:5500/index5(meme3).html" target="_self">生日快樂專區</a></li>
+                <li><a href="http://127.0.0.1:5500/index6(meme4).html" target="_self">時間字卡專區</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <script>
+                document.getElementById('homeButton').addEventListener('click', function () {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+                document.getElementById('homeButton').addEventListener('click', function() {
+      window.location.href = "http://127.0.0.1:5500/index.html";
+    });
+            </script>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous">
+                </script>
+</body>
+
+</html>

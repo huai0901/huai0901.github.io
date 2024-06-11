@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <style>
+        .custom-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 5px; /* 调整按钮位置 */
+      }
+    .custom-button ion-icon {
+      font-size: 32px;
+      color: #160f30;
+    }
+    .navbar {
+      background-image: url('/img/sponge.jpg'); /* 替換成您自己的圖片路徑 */
+      background-size: cover; /* 確保圖片覆蓋整個navbar */
+      background-position: center; /* 圖片置中 */
+    }
+    .navbar-brand {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px; /* 更改字體大小 */
+      color: #000000; /* 更改字體顏色 */
+      font-weight: bold; /* 更改字體粗細 */
+      font-family: 'Arial', sans-serif; /* 更改字體 */
+    }
+    
+    
+
+    .offcanvas-body {
+      background-image: url('/img/海綿寶1.jpg'); /* 替換成您自己的圖片路徑 */
+      background-size: cover; /* 確保圖片覆蓋整個offcanvas-body */
+      background-position: center; /* 圖片置中 */
+      
+    }
+
+    .accordion-item .accordion-header, 
+    .accordion-item .accordion-collapse {
+      background: rgba(255, 255, 255, 0.8); /* 可選：添加透明背景以便於閱讀 */
+    }
+
+    /* 梗圖區連結的樣式 */
+    .accordion-item a {
+      text-decoration: none; /* 移除連結底線 */
+      color: #000000; /* 更改字體顏色 */
+      font-size: 18px; /* 更改字體大小 */
+    }
+
+    /* 梗圖區連結的樣式2 */
+    .accordion-item ul {
+      list-style-type: none; /* 移除點點 */
+      padding-left: 0; /* 移除左側間距 */
+    }
+
+    .accordion-item ul li {
+      margin-bottom: 10px; /* 更改行距 */
+    }
+
+        body {
+            background-image: url('img/03Patrick/stonehouse.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .box {
+            width: 1000px;
+            height: 550px;
+            background-color: rgba(64, 224, 208, 0.8);
+            margin: 6em auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgb(0, 0, 0);
+            border-radius: 20px;
+            /* 添加圆角 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .image-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 93vh;
+        }
+
+        .image-group {
+            display: flex;
+            gap: 40px;
+        }
+
+        .image-row button {
+            border: none;
+            background: none;
+            padding: 0;
+            position: relative;
+        }
+
+        .image-row img {
+            transition: transform 0.3s ease;
+        }
+
+        .image-row button:hover img {
+            transform: scale(1.3);
+        }
+
+        .image-row button .tooltiptext {
+            visibility: hidden;
+            width: 150px;
+            background-color: #fceee8;
+            color: #000000;
+            text-align: center;
+            border-radius: 5px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            top: -90px;
+            left: 20%;
+            transform: translatey(-55%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .image-row button:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <a target="_self" id="back"></a>
+        <div class="image-row">
+            <div class="image-group">
+                <button onclick="scrollToBox()">
+                    <img src="img/03Patrick/PatrickStar.png" style="width: 180px;">
+                    <span class="tooltiptext">誰住在深海的　　石頭底下?　　　(點看看)</span>
+                </button>
+            </div>
+            <div class="image-group">
+                <button onclick="scrollToBox1()">
+                    <img src="img/03Patrick/PatrickStarparents.png" style="width: 252px;">
+                    <span class="tooltiptext">你們真的是　　　派大星爸媽?　　(點看看)</span>
+                </button>
+                <button onclick="scrollToBox2()">
+                    <img src="img/03Patrick/PatrickStarsis.png" style="width: 200px;">
+                    <span class="tooltiptext">誰是派大星老姐?(點看看)</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="box" id="派大星">
+            <div class="row m-5">
+                <div class="card-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="img/03Patrick/cutpatrickstar.jpg" class="card-img-top">
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card-body">
+                                <h4 class="card-title"><b>派大星</b></h4>
+                                <p class="card-text">
+                                派大星是一個粉紅色的海星，住在章魚哥家旁的一塊大圓形石頭底下。
+                                海綿寶寶是最要好的朋友，也是章魚哥討厭的人之一，
+                                愛好是發呆、睡大頭覺和大吃冰淇淋。                                
+                                <p></p>
+                                派大星沒有工作，
+                                他是蟹堡王的忠實顧客，但也喜歡吃海霸糊，
+                                所以會去蟹堡王或海之霸當一日員工，不過大部分都會搞砸就是了。
+                                </p>
+                                <a href="https://youtu.be/wZGedBzcYas?si=EbM_OZbrCrWyzpu3" class="btn btn-primary">派大星的24笑話</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-0">
+                <a href="#back" class="btn btn-outline-light">返回</a>
+            </div>
+        </div>
+
+        <div class="box" id="海星父母">
+            <div class="row m-5">
+                <div class="card-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="img/03Patrick/PatrickStarparentshug.png" class="card-img-top">
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card-body">
+                                <h4 class="card-title"><b>Herb & Margie Star</b></h4>
+                                <p class="card-text">
+                                派大星老爸老媽認為派大星笨笨的，穿著和派大星的衣服款式差不多，
+                                都有海底小花的圖案。    
+                                <p></p>
+                                不過大家有印象的應該是派大星的假父母，
+                                他們叫做珍珍和馬帝，因為認錯人以為派大星是他們兒子，
+                                結果最後發現他們根本沒有兒子。
+                                </p>
+                                <a href="https://youtu.be/mEbuSoX3sT8?si=TWzHQjXmSghqlggC" class="btn btn-primary">看看誰才是派大星爸媽</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-0">
+                <a href="#back" class="btn btn-outline-light">返回</a>
+            </div>
+        </div>
+
+        <div class="box" id="海星姐">
+            <div class="row m-5">
+                <div class="card-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="img/03Patrick/PatrickStarsishug.png" class="card-img-top">
+                        </div>
+
+                        <div class="col-6">
+                            <div class="card-body">
+                                <h4 class="card-title"><b>派大珊</b></h4>
+                                <p class="card-text">
+                                派大珊是派大星姐姐，在很小的時後與派大星走失過。
+                                說話口氣兇悍、身材壯碩，
+                                她有兩個臉，應該算是雙面人，前頭脾氣很好，後頭脾氣不好。
+                                <p></p>
+                                容易是非不分，或聽到別人說派大星的不好，脾氣就會憤怒失控，
+                                還曾經毀掉海綿寶寶和章魚哥的家。
+                                </p>
+                                <a href="https://youtu.be/FEfI-CA06fU?si=tYScBBS7ax2yXZsj" class="btn btn-primary">看看狂氣派大珊老姐</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-0">
+                <a href="#back" class="btn btn-outline-light">返回</a>
+            </div>
+        </div>
+
+        <script>
+            function scrollToBox() {
+                var box = document.getElementById('派大星');
+                box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            function scrollToBox1() {
+                var box = document.getElementById('海星父母');
+                box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            function scrollToBox2() {
+                var box = document.getElementById('海星姐');
+                box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        </script>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-light fixed-top">
+            <div class="container-fluid">
+                <button class="custom-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft"
+                    aria-controls="offcanvasLeft">
+                    <ion-icon name="list-sharp"></ion-icon>
+                </button>
+                <button id="homeButton" class="custom-button">
+                    <ion-icon name="home"></ion-icon>
+                  </button>
+                <a class="navbar-brand" href="#">派大星</a>
+            </div>
+        </nav>
+
+
+        <!-- Offcanvas Component -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasLeftLabel">SpongeBob SquarePants</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <!-- Add your menu content here -->
+
+
+                <!-- Story Section -->
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                故事介紹
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><a href="story.html" target="_self">故事介紹</a></li>
+                                    
+                                  </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Characters Section -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                角色介紹
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><a href="http://127.0.0.1:5500/01.Spongebob.html" target="_self">海綿寶寶</a></li>
+                                    <li><a href="http://127.0.0.1:5500/02.Squidward.html" target="_self">章魚哥</a></li>
+                                    <li><a href="http://127.0.0.1:5500/03.Pat.html" target="_self">派大星</a></li>
+                                    <li><a href="http://127.0.0.1:5500/04.Krab.html" target="_self">蟹老闆</a></li>
+                                    <li><a href="http://127.0.0.1:5500/05.J.%20P.html" target="_self">皮老闆</a></li>
+                                    <li><a href="http://127.0.0.1:5500/06.Other.html" target="_self">其他角色</a></li>
+                                  </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Meme Section -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                梗圖區
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><a href="http://127.0.0.1:5500/index2(meme).html" target="_self">嗆人用</a></li>
+                <li><a href="http://127.0.0.1:5500/index4(meme2).html" target="_self">有趣.現實</a></li>
+                <li><a href="http://127.0.0.1:5500/index5(meme3).html" target="_self">生日快樂專區</a></li>
+                <li><a href="http://127.0.0.1:5500/index6(meme4).html" target="_self">時間字卡專區</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <script>
+                document.getElementById('homeButton').addEventListener('click', function () {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+                document.getElementById('homeButton').addEventListener('click', function() {
+      window.location.href = "http://127.0.0.1:5500/index.html";
+    });
+            </script>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous">
+                </script>
+</body>
+
+</html>

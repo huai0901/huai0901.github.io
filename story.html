@@ -9,7 +9,14 @@
   <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <style>
-   .custom-button {
+    .text {
+            font-family: '微軟正黑體'; /* 設置字體 */
+            font-weight: bold; /* 設置加粗體 */
+            font-size: 18px; /* 設置字體大小 */
+        }
+
+
+    .custom-button {
       background: none;
       border: none;
       cursor: pointer;
@@ -35,11 +42,7 @@
       font-family: 'Arial', sans-serif; /* 更改字體 */
     }
     
-    .card {
-      margin: auto; /* 將卡片置中 */
-      margin-top: 100px; /* 調整卡片的上方間距 */
-      width: 18rem;
-    }
+    
 
     .offcanvas-body {
       background-image: url('/img/海綿寶1.jpg'); /* 替換成您自己的圖片路徑 */
@@ -69,109 +72,11 @@
     .accordion-item ul li {
       margin-bottom: 10px; /* 更改行距 */
     }
-
-    .image-container {
-      display: flex;
-      flex-wrap: wrap; /* 允许换行 */
-      margin: 0; /* 移除容器的边距 */
-      padding: 0; /* 移除容器的内边距 */
-      width: 100vw; /* 确保容器占满全屏宽度 */
-    }
-
-    .image-container img {
-      width: 25%; /* 每个图片占用容器的25%宽度 */
-      height: auto; /* 保持图片原始比例 */
-      margin: 0; /* 移除图片间的边距 */
-      padding: 0; /* 移除图片的内边距 */
-      box-sizing: border-box; /* 包含内边距和边框的总宽度 */
-      transition: transform 0.3s ease-in-out; /* 增加放大效果的过渡 */
-    }
-
-    .image-container img:hover {
-      transform: scale(1.1); /* 鼠标悬停时放大图片 */
-    }
-
-    .spacer {
-      height: 70px; /* 定义间距高度 */
-    }
-
-    .header {
-      position: relative;
-    }
-
   </style>
 </head>
-
 <body>
- 
   
-  <!-- 图片容器和导航栏之间的间距容器 -->
-  <div class="spacer"></div>
-
-  <div class="image-container">
-    <img src="/img/有趣.現實/01.jpg" alt="Image 1">
-    <img src="/img/有趣.現實/02.jpg" alt="Image 2">
-    <img src="/img/有趣.現實/03.jpg" alt="Image 3">
-    <img src="/img/有趣.現實/04.jpg" alt="Image 4">
-    <img src="/img/有趣.現實/05.jpg" alt="Image 5">
-    <img src="/img/有趣.現實/06.jpg" alt="Image 6">
-    <img src="/img/有趣.現實/07.jpg" alt="Image 7">
-    <img src="/img/有趣.現實/08.jpg" alt="Image 8">
-    <img src="/img/有趣.現實/09.jpg" alt="Image 9">
-    <img src="/img/有趣.現實/10.jpg" alt="Image 10">
-    <img src="/img/有趣.現實/11.jpg" alt="Image 11">
-    <img src="/img/有趣.現實/12.jpg" alt="Image 12">
-    <img src="/img/有趣.現實/13.jpg" alt="Image 13">
-    <img src="/img/有趣.現實/14.jpg" alt="Image 14">
-    <img src="/img/有趣.現實/15.jpg" alt="Image 15">
-    <img src="/img/有趣.現實/16.jpg" alt="Image 16">
-    <img src="/img/有趣.現實/17.jpg" alt="Image 17">
-    <img src="/img/有趣.現實/18.jpg" alt="Image 18">
-    <img src="/img/有趣.現實/19.jpg" alt="Image 19">
-    <img src="/img/有趣.現實/20.jpg" alt="Image 20">
-    <img src="/img/有趣.現實/21.jpg" alt="Image 21">
-    <img src="/img/有趣.現實/22.jpg" alt="Image 22">
-    <img src="/img/有趣.現實/23.jpg" alt="Image 23">
-    <img src="/img/有趣.現實/24.jpg" alt="Image 24">
-    <img src="/img/有趣.現實/25.jpg" alt="Image 25">
-    <img src="/img/有趣.現實/26.jpg" alt="Image 26">
-    <img src="/img/有趣.現實/27.jpg" alt="Image 27">
-    <img src="/img/有趣.現實/28.jpg" alt="Image 28">
-    <img src="/img/有趣.現實/29.jpg" alt="Image 29">
-    <img src="/img/有趣.現實/30.jpg" alt="Image 30">
-    <img src="/img/有趣.現實/31.jpg" alt="Image 31">
-    <img src="/img/有趣.現實/32.jpg" alt="Image 32">
-    <img src="/img/有趣.現實/33.jpg" alt="Image 33">
-    <img src="/img/有趣.現實/34.jpg" alt="Image 34">
-    <img src="/img/有趣.現實/35.jpg" alt="Image 35">
-    <img src="/img/有趣.現實/36.jpg" alt="Image 36">
-    <img src="/img/有趣.現實/37.jpg" alt="Image 37">
-    <img src="/img/有趣.現實/38.jpg" alt="Image 38">
-    <img src="/img/有趣.現實/39.jpg" alt="Image 39">
-    <img src="/img/有趣.現實/40.jpg" alt="Image 40">
-    <img src="/img/有趣.現實/41.jpg" alt="Image 41">
-    <img src="/img/有趣.現實/42.jpg" alt="Image 42">
-    <img src="/img/有趣.現實/43.jpg" alt="Image 43">
-    <img src="/img/有趣.現實/44.jpg" alt="Image 44">
-    <img src="/img/有趣.現實/45.jpg" alt="Image 45">
-    <img src="/img/有趣.現實/46.jpg" alt="Image 46">
-    <img src="/img/有趣.現實/47.jpg" alt="Image 47">
-    <img src="/img/有趣.現實/48.jpg" alt="Image 48">
-    <img src="/img/有趣.現實/49.jpg" alt="Image 49">
-    <img src="/img/有趣.現實/50.jpg" alt="Image 50">
-    <img src="/img/有趣.現實/51.jpg" alt="Image 51">
-    <img src="/img/有趣.現實/52.jpg" alt="Image 52">
-    <img src="/img/有趣.現實/53.jpg" alt="Image 53">
-    <img src="/img/有趣.現實/54.jpg" alt="Image 54">
-    <img src="/img/有趣.現實/55.jpg" alt="Image 55">
-    <img src="/img/有趣.現實/56.jpg" alt="Image 56">
-    <img src="/img/有趣.現實/57.jpg" alt="Image 57">
-    <img src="/img/有趣.現實/58.jpg" alt="Image 58">
-    <img src="/img/有趣.現實/59.jpg" alt="Image 59">
-    <img src="/img/有趣.現實/60.jpg" alt="Image 60">
-    <!-- 你可以继续添加更多图片 -->
   </div>
-  
   <!-- Navbar -->
   <nav class="navbar navbar-light fixed-top">
     <div class="container-fluid">
@@ -181,9 +86,61 @@
       <button id="homeButton" class="custom-button">
         <ion-icon name="home"></ion-icon>
       </button>
-      <a class="navbar-brand" href="#">有趣.現實</a>
+      <a class="navbar-brand" href="#">海綿寶寶小圖鑑</a>
     </div>
   </nav>
+
+
+
+  <!-- 輪播圖片 -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://image-cdn.hypb.st/https%3A%2F%2Fhk.hypebeast.com%2Ffiles%2F2024%2F03%2F26%2Fnickelodeon-spongebob-squarepant-1.jpg?cbr=1&q=90" class="d-block w-100"style="height: 800px; alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://uc.udn.com.tw/photo/2018/11/28/99/5591211.jpg" class="d-block w-100"style="height: 800px; alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://m.media-amazon.com/images/M/MV5BNDUwNjBkMmUtZjM2My00NmM4LTlmOWQtNWE5YTdmN2Y2MTgxXkEyXkFqcGdeQXRyYW5zY29kZS13b3JrZmxvdw@@._V1_.jpg" class="d-block w-100"style="height: 800px;" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+ 
+  <div style="width: 1000px; margin: 0 auto; text-align: center;">
+    <p style="text-align: center;">
+        <h1>故事介紹</h1>
+    </p>
+    <p style="text-align: center;">
+        <h3>《海綿寶寶》是一部充滿歡樂、創意和友情的經典動畫。</h3>
+    </p>
+    <p style="text-align: center;">
+        <h3>故事發生在一個神奇的海底世界，主角海綿寶寶 是一個樂天又好奇的方形海綿，他與他的好朋友、派大星、章魚哥，以及可靠的老闆蟹老板，一起生活在海底的比奇堡。每個角色都有自己獨特的個性和故事。</h3>
+    </p>
+    <p style="text-align: center;">
+      <h3>觀眾可以跟隨海綿寶寶和他的朋友們一起度過一連串的冒險。有時他們會試圖擊敗皮老闆的邪惡計劃，有時他們會參加比賽或舉辦派對，而有時候他們只是在城市裡度過悠閒的一天。</h3>
+  </p>
+</div>
+
+
+
+
+
+
 
   <!-- Offcanvas Component -->
   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
@@ -222,13 +179,14 @@
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <ul>
-                <li><a href="http://127.0.0.1:5500/01.Spongebob.html" target="_self">海綿寶寶</a></li>
-                                    <li><a href="http://127.0.0.1:5500/02.Squidward.html" target="_self">章魚哥</a></li>
-                                    <li><a href="http://127.0.0.1:5500/03.Pat.html" target="_self">派大星</a></li>
-                                    <li><a href="http://127.0.0.1:5500/04.Krab.html" target="_self">蟹老闆</a></li>
-                                    <li><a href="http://127.0.0.1:5500/05.J.%20P.html" target="_self">皮老闆</a></li>
-                                    <li><a href="http://127.0.0.1:5500/06.Other.html" target="_self">其他角色</a></li>
-              </ul>
+                <ul>
+                  <li><a href="http://127.0.0.1:5500/01.Spongebob.html" target="_self">海綿寶寶</a></li>
+                  <li><a href="http://127.0.0.1:5500/02.Squidward.html" target="_self">章魚哥</a></li>
+                  <li><a href="http://127.0.0.1:5500/03.Pat.html" target="_self">派大星</a></li>
+                  <li><a href="http://127.0.0.1:5500/04.Krab.html" target="_self">蟹老闆</a></li>
+                  <li><a href="http://127.0.0.1:5500/05.J.%20P.html" target="_self">皮老闆</a></li>
+                  <li><a href="http://127.0.0.1:5500/06.Other.html" target="_self">其他角色</a></li>
+                </ul>
             </div>
           </div>
         </div>
@@ -254,6 +212,7 @@
 
     </div>
   </div>
+  
   <script>
     document.getElementById('homeButton').addEventListener('click', function() {
       window.location.href = "http://127.0.0.1:5500/index.html";
@@ -261,3 +220,6 @@
   </script>
 </body>
 </html>
+
+
+

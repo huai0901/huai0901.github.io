@@ -1,40 +1,433 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Right Slide Offcanvas</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <style>
-    .offcanvas-end {
-      width: 250px; /* 調整寬度 */
+    <title>地圖圖示</title>
+    <!-- 必要的 meta 標籤 -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
+
+    <!-- 引入 Bootstrap CSS v5.3.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+    <style>
+         .custom-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 5px; /* 调整按钮位置 */
+      }
+    .custom-button ion-icon {
+      font-size: 32px;
+      color: #160f30;
     }
-  </style>
+    .navbar {
+      background-image: url('/img/sponge.jpg'); /* 替換成您自己的圖片路徑 */
+      background-size: cover; /* 確保圖片覆蓋整個navbar */
+      background-position: center; /* 圖片置中 */
+    }
+    .navbar-brand {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px; /* 更改字體大小 */
+      color: #000000; /* 更改字體顏色 */
+      font-weight: bold; /* 更改字體粗細 */
+      font-family: 'Arial', sans-serif; /* 更改字體 */
+    }
+    
+    
+
+    .offcanvas-body {
+      background-image: url('/img/海綿寶1.jpg'); /* 替換成您自己的圖片路徑 */
+      background-size: cover; /* 確保圖片覆蓋整個offcanvas-body */
+      background-position: center; /* 圖片置中 */
+      
+    }
+
+    .accordion-item .accordion-header, 
+    .accordion-item .accordion-collapse {
+      background: rgba(255, 255, 255, 0.8); /* 可選：添加透明背景以便於閱讀 */
+    }
+
+    /* 梗圖區連結的樣式 */
+    .accordion-item a {
+      text-decoration: none; /* 移除連結底線 */
+      color: #000000; /* 更改字體顏色 */
+      font-size: 18px; /* 更改字體大小 */
+    }
+
+    /* 梗圖區連結的樣式2 */
+    .accordion-item ul {
+      list-style-type: none; /* 移除點點 */
+      padding-left: 0; /* 移除左側間距 */
+    }
+
+    .accordion-item ul li {
+      margin-bottom: 10px; /* 更改行距 */
+    }
+
+
+
+
+
+
+
+
+        body {
+            background-image: url('https://i.ibb.co/JrP8VWm/map-png.png');    
+            background-size: 100%; /* 縮小背景圖像至100% */
+            background-position: center top; /* 將背景圖片置中 */
+            background-repeat: no-repeat; /* 禁止背景圖片重複 */
+        }
+
+        .btn-transparent {
+            background: transparent; /* 透明背景 */
+            display: block;
+            position: absolute;
+            font-family: '微軟正黑體'; /* 設置字體 */
+            color: white; /* 設置字體顏色 */
+            font-weight: bold; /* 設置加粗體 */
+            font-size: 32px; /* 設置字體大小 */
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* 添加黑色外框 */
+        }
+
+        .text {
+            font-family: '微軟正黑體'; /* 設置字體 */
+            font-weight: bold; /* 設置加粗體 */
+            font-size: 18px; /* 設置字體大小 */
+        }
+
+        .card-container {
+            display: none;
+            position: absolute; /* 絕對定位 */
+            z-index: 1000; /* 確保卡片在其他元素之上 */
+        }
+
+        .card {
+            width: 200px; /* 調整卡片寬度 */
+        }
+
+        .content-container {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 50px;
+            height: 600px; /* 調整容器高度以顯示所有按鈕 */
+        }
+        
+    </style>
 </head>
 
-
-
 <body>
+    <div class="content-container">
+        <!-- 透明按鈕們 -->
+        <button class="btn btn-transparent " id="triggerButton1" style="top: 70px; left: 650px; height: 100px; width: 250px;">點我</button>
+        <button class="btn btn-transparent" id="triggerButton3" style="top: 10px; left: 370px; height: 90px; width: 110px;">點我</button>
+        <button class="btn btn-transparent" id="triggerButton4" style="top: 410px; left: 1180px;">點我</button>
+        <button class="btn btn-transparent" id="triggerButton5" style="top: 500px; left: 1010px; height: 90px; width: 100px;">點我</button>
+        <button class="btn btn-transparent" id="triggerButton6" style="top: 150px; left: 200px; height: 150px; width: 250px">點我</button>
+        <button class="btn btn-transparent" id="triggerButton7" style="top: 600px; left: 300px;">點我</button>
+        <button class="btn btn-transparent" id="triggerButton8" style="top: 500px; left: 450px; height: 200px">點我</button>
+        <button class="btn btn-transparent" id="triggerButton9" style="top: 550px; left: 630px; height: 150px">點我</button>
+        <button class="btn btn-transparent" id="triggerButton10" style="top: 0px; left: 0px; height: 150px; width: 150px;">點我</button>
+        <button class="btn btn-transparent" id="triggerButton11" style="top: 30px; left: 1080px; height: 100px; width: 100px;">點我</button>
+        <button class="btn btn-transparent" id="triggerButton12" style="top: 200px; left: 1250px; height: 150px; width: 150px;">點我</button>
+        <button class="btn btn-transparent" id="triggerButton13" style="top: 650px; left: 800px; height: 150px; width: 150px;">點我</button>
+    
+        <!-- 卡片們 -->
+        <div class="card-container" id="infoCard1">
+            <div class="card">
+                <div class="card-header text">
+                    手套樂園
+                </div>
+                <div class="card-body">
+                    <p class="card-text">一座以手套為主題的主題公園，裡面的設施都非常危險。</p>
+                    <p class="card-text">因為經營不善，面臨關閉危機。</p>
+                    <button class="btn btn-secondary closeButton">關閉</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-container" id="infoCard3">
+            <div class="card">
+                <div class="card-header text">
+                    珊迪的圓頂樹屋
+                </div>
+                <div class="card-body">
+                    <p class="card-text">外觀為一半圓玻璃球體，內部是充滿空氣的仿陸地環境。</p>
+                    <p class="card-text">為珊迪日常起居的地方，也是珊迪從事科學實驗、招待客人的地方。</p>
+                    <button class="btn btn-secondary closeButton">關閉</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-container" id="infoCard4">
+            <div class="card">
+                <div class="card-header text">
+                    蟹堡王餐廳
+                </div>
+                <div class="card-body">
+                    <p class="card-text">是一家位於比其堡最受歡迎的快餐店，由蟹老闆經營。</p>
+                    <p class="card-text">最出名的餐點是美味蟹堡，旗下員工有海綿寶寶和章魚哥。</p>
+                    <button class="btn btn-secondary closeButton">關閉</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-container" id="infoCard5">
+            <div class="card">
+                <div class="card-header text">
+                    海之霸
+                </div>
+                <div class="card-body">
+                    <p class="card-text">是比奇堡一間餐廳，經營者是皮老闆，同時也是他和凱倫居住的地方。</p>
+                    <p class="card-text">海之霸所推出的料理噁心至極，因此生意慘淡。</p>
+                    <button class="btn btn-secondary closeButton">關閉</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-container" id="infoCard6">
+            <div class="card">
+                <div class="card-header text">
+                    懸崖
+                </div>
+                <div class="card-body">
+                    <p class="card-text">哇喔 小心點！掉下去就麻煩了。</p>
+                    <button class="btn btn-secondary closeButton">關閉</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-container" id="infoCard7">
+            <div class="card">
+                <div class="card-header text">
+                    石頭屋
+                </div>
+                <div class="card-body">
+                    <p class="card-text">是派大星的住家，地址為貝殼街120號。</p>
+                    <p class="card-text">一顆棕色石頭，頂端有風向標。與地面之間有鉸鏈 能進行開關。</p>
+                    <button class="btn btn-secondary closeButton">關閉</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-container" id="infoCard8">
+            <div class="card">
+                <div class="card-header text">
+                    復活島人像屋
+                </div>
+                <div class="card-body">
+                    <p class="card-text">是章魚哥的住所，位於貝殼街122號。</p>
+                    <p class="card-text">為深藍色一復活島人像，有一扇大門和兩扇窗戶，屋頂亦有一扇小門。</p>
+                    <button class="btn btn-secondary closeButton">關閉</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-container" id="infoCard9">
+            <div class="card">
+                <div class="card-header text">
+                    鳳梨屋
+                </div>
+                <div class="card-body">
+                    <p class="card-text">是海綿寶寶的住所，地址為貝殼街124號。</p>
+                    <p class="card-text">有一扇大門和多扇窗戶，二樓有樓梯可通往頂樓，也就是鳳梨葉的部分。</p>
+                    <button class="btn btn-secondary closeButton">關閉</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-container" id="infoCard10">
+            <div class="card">
+                <div class="card-header text">
+                    海草
+                </div>
+                <div class="card-body">
+                    <p class="card-text">就只是海草。</p>
+                    <button class="btn btn-secondary closeButton">關閉</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-container" id="infoCard11">
+            <div class="card">
+                <div class="card-header text">
+                    飛行荷蘭人的船
+                </div>
+                <div class="card-body">
+                    <p class="card-text">是一個由已經死去2000多年的荷蘭鬼魂所開的船。</p>
+                    <p class="card-text">常在比奇堡附近逗留。</p>
+                    <button class="btn btn-secondary closeButton">關閉</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-container" id="infoCard12">
+            <div class="card">
+                <div class="card-header text">
+                    酷樂湖
+                </div>
+                <div class="card-body">
+                    <p class="card-text">位在比奇堡最受歡迎的水下海灘。</p>
+                    <p class="card-text">雖然故事背景位在海底，但角色們卻能在海底游泳與衝浪。</p>
+                    <button class="btn btn-secondary closeButton">關閉</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-container" id="infoCard13">
+            <div class="card">
+                <div class="card-header text">
+                    水母
+                </div>
+                <div class="card-body">
+                    <p class="card-text">滋滋滋(放電)。</p>
+                    <button class="btn btn-secondary closeButton">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-  <!-- Offcanvas Trigger Button -->
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-    Open Right Offcanvas
-  </button>
+
+      <!-- Navbar -->
+ <nav class="navbar navbar-light fixed-top">
+    <div class="container-fluid">
+      <button class="custom-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">
+        <ion-icon name="list-sharp"></ion-icon>
+      </button>
+      <button id="homeButton" class="custom-button">
+        <ion-icon name="home"></ion-icon>
+      </button>
+      <a class="navbar-brand" href="#">海綿寶寶小圖鑑</a>
+    </div>
+  </nav>
+
+
+
+
+
+
+
+
 
   <!-- Offcanvas Component -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas Right</h5>
+      <h5 class="offcanvas-title" id="offcanvasLeftLabel">歡迎來到比奇堡</h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
       <!-- Add your menu content here -->
-      <p>故事介紹</p>
-      <p>角色介紹</p>
-      <p>梗圖區</p>
+
+      <!-- Story Section -->
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              故事介紹
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <ul>
+                <li><a href="story.html" target="_self">故事介紹</a></li>
+
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Characters Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              角色介紹
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <ul>
+                <li><a href="http://127.0.0.1:5500/01.Spongebob.html" target="_self">海綿寶寶</a></li>
+                <li><a href="http://127.0.0.1:5500/02.Squidward.html" target="_self">章魚哥</a></li>
+                <li><a href="http://127.0.0.1:5500/03.Pat.html" target="_self">派大星</a></li>
+                <li><a href="http://127.0.0.1:5500/04.Krab.html" target="_self">蟹老闆</a></li>
+                <li><a href="http://127.0.0.1:5500/05.J.%20P.html" target="_self">皮老闆</a></li>
+                <li><a href="http://127.0.0.1:5500/06.Other.html" target="_self">其他角色</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meme Section -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              梗圖區
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <ul>
+                <li><a href="http://127.0.0.1:5500/index2(meme).html" target="_self">嗆人用</a></li>
+                <li><a href="http://127.0.0.1:5500/index4(meme2).html" target="_self">有趣.現實</a></li>
+                <li><a href="http://127.0.0.1:5500/index5(meme3).html" target="_self">生日快樂專區</a></li>
+                <li><a href="http://127.0.0.1:5500/index6(meme4).html" target="_self">時間字卡專區</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
     </div>
   </div>
 
+
+
+
+
+
+    <header>
+        <!-- 放置導覽列 -->
+    </header>
+    <main></main>
+    <footer>
+        <!-- 放置頁尾 -->
+    </footer>
+
+    <!-- 引入 Bootstrap JavaScript 函式庫 -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+    <script>
+    document.querySelectorAll('.btn-transparent').forEach(button => {
+            button.addEventListener('click', function() {
+                const cardId = 'infoCard' + this.id.replace('triggerButton', '');
+                const card = document.getElementById(cardId);
+                const rect = this.getBoundingClientRect();
+                const bodyRect = document.body.getBoundingClientRect();
+                const offsetX = rect.left - bodyRect.left;
+                const offsetY = rect.top - bodyRect.top;
+
+                document.querySelectorAll('.card-container').forEach(card => {
+                    card.style.display = 'none';
+                });
+
+                card.style.left = `${offsetX + this.offsetWidth + 10}px`;
+                card.style.top = `${offsetY}px`;
+                card.style.display = 'block';
+            });
+        });
+
+        document.querySelectorAll('.closeButton').forEach(button => {
+            button.addEventListener('click', function() {
+                this.closest('.card-container').style.display = 'none';
+            });
+        });
+
+
+
+
+        document.getElementById('homeButton').addEventListener('click', function() {
+      window.location.href = "http://127.0.0.1:5500/index.html";
+    });
+
+    </script>
 </body>
 </html>
