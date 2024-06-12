@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Left Slide Offcanvas with Dropdowns</title>
+  <title>嗆人用</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -109,27 +109,27 @@
   <div class="spacer"></div>
 
   <div class="image-container">
-    <img src="/img/嗆人/今天很嗆是吧.jpg" alt="Image 1">
-    <img src="/img/嗆人/去別的地方 耍本好不好.jpg" alt="Image 2">
-    <img src="/img/嗆人/他們在耍笨.jpg" alt="Image 3">
+    <img src="/img/嗆人/今天很嗆是吧.jpg" alt="Image 1"data-audio="MP3/嗆人音檔/01很嗆.mp3">
+    <img src="/img/嗆人/去別的地方 耍本好不好.jpg" alt="Image 2" data-audio="MP3/嗆人音檔/02耍笨.mp3">
+    <img src="/img/嗆人/他們在耍笨.jpg" alt="Image 3" data-audio="MP3/嗆人音檔/03笨笨.mp3">
     <img src="/img/嗆人/你好臭.jpg" alt="Image 4">
-    <img src="/img/嗆人/你是臭片子.jpg" alt="Image 5">
+    <img src="/img/嗆人/你是臭片子.jpg" alt="Image 5" data-audio="MP3/嗆人音檔/05騙子.mp3">
     <img src="/img/嗆人/什麼味道這麼臭.jpg" alt="Image 6">
     <img src="/img/嗆人/你不要來亂好不好.jpg" alt="Image 7">
-    <img src="/img/嗆人/大胖呆.jpg" alt="Image 8">
+    <img src="/img/嗆人/大胖呆.jpg" alt="Image 8" data-audio="MP3/嗆人音檔/08甲殼類.mp3">
     <img src="/img/嗆人/那胖子在跟誰說話.jpg" alt="Image 9">
-    <img src="/img/嗆人/好可憐喔.jpg" alt="Image 10">
-    <img src="/img/嗆人/慘了 又來個天兵.jpg" alt="Image 11">
+    <img src="/img/嗆人/好可憐喔.jpg" alt="Image 10" data-audio="MP3/嗆人音檔/好可憐喔.mp3">
+    <img src="/img/嗆人/慘了 又來個天兵.jpg" alt="Image 11" data-audio="MP3/嗆人音檔/11天兵.mp3">
     <img src="/img/嗆人/你是負責搞笑的是嗎.jpg" alt="Image 12">
     <img src="/img/嗆人/沒文化的垃圾喳喳.jpg" alt="Image 13">
-    <img src="/img/嗆人/看我怎麼打扁你.jpg" alt="Image 14">
+    <img src="/img/嗆人/看我怎麼打扁你.jpg" alt="Image 14" data-audio="MP3/嗆人音檔/打扁你.mp3">
     <img src="/img/嗆人/老頭子都比擬機靈.jpg" alt="Image 15">
     <img src="/img/嗆人/臭老頭笨笨.jpg" alt="Image 16">
-    <img src="/img/嗆人/有種來阿.jpg" alt="Image 17">
+    <img src="/img/嗆人/有種來阿.jpg" alt="Image 17" data-audio="MP3/嗆人音檔/臭老頭.mp3">
     <img src="/img/嗆人/不要再鬧了.jpg" alt="Image 18">
-    <img src="/img/嗆人/檢舉你.jpg" alt="Image 19">
+    <img src="/img/嗆人/檢舉你.jpg" alt="Image 19" data-audio="MP3/嗆人音檔/19檢舉你.mp3">
     <img src="/img/嗆人/你朋友雞婆會害你.jpg" alt="Image 20">
-    <img src="/img/嗆人/原來這叫工作.jpg" alt="Image 21">
+    <img src="/img/嗆人/原來這叫工作.jpg" alt="Image 21" data-audio="MP3/嗆人音檔/工作.mp3">
     <img src="/img/嗆人/敗類.jpg" alt="Image 22">
     <img src="/img/嗆人/又蠢又笨.jpg" alt="Image 23">
     <img src="/img/嗆人/只少我不會穿反.jpg" alt="Image 24">
@@ -247,6 +247,22 @@
 <script>
   document.getElementById('homeButton').addEventListener('click', function() {
     window.location.href = "index.html";
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.image-container img');
+    let audio = new Audio();
+
+    images.forEach(img => {
+      img.addEventListener('mouseenter', () => {
+        audio.src = img.getAttribute('data-audio');
+        audio.play();
+      });
+
+      img.addEventListener('mouseleave', () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    });
   });
 </script>
 </body>
